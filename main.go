@@ -2,27 +2,34 @@ package main
 
 import "fmt"
 
-func main()  {
-		sales :=[]int{12_000, 8_000, 15_000, 12_000}
-		totalBonus := calculateTotalBonus(sales)
-		// Считаем общее количество бонусов
-		fmt.Println("Общее количество бонусов" , totalBonus)
+func main() {
 
-		//.....
+	salary := []int{12000, 8000, 15000, 8000}
+
+	fmt.Println(bonusAmount(5, salary))
+
 }
 
+func bonusAmount(percent int, salary []int) int {
 
-	func calculateTotalBonus (sales []int) int {
-		totalBonus := 0 // Общее количество бонусов
-		for _, sales := range sales {
-			if sales > 10_000 {
-				upSales := sales - 10_000
-				bonus := (upSales * 5) / 100
-				fmt.Println(bonus)
-				totalBonus += bonus
-			}
+	sumOfBonuses := 0
+
+	for _, employee := range salary {
+
+		bonusBorder := 10_000
+
+		if employee > bonusBorder {
+
+			bonus := employee - bonusBorder
+
+			bonus = bonus * percent / 100
+
+			sumOfBonuses = sumOfBonuses + bonus
 
 		}
-		return totalBonus
+
 	}
 
+	return sumOfBonuses
+
+}

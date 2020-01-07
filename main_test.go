@@ -1,28 +1,39 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func Test_calculateTotalBonus(t *testing.T) {
-	type args struct {
-		sales []int
-	}
+func TestBonusAmount(t *testing.T) {
+
 	tests := []struct {
 		name string
-		sales []int
-		totalBonus int
+
+		score []int
+
 		want int
 	}{
-		// TODO: Add test cases.
-	}
-	for _, test := range tests{
-		        got := calculateTotalBonus(test.sales);
-		        if test.want != got {
-				t.Error("want: ", test.want,  "but got: ", got)
 
-			}
+		{name: "More than 10_000", score: []int{15_000, 12_000, 11_000}, want: 400},
+
+		{name: "Less than 10_000", score: []int{8000, 9000, 5, 4, 400}, want: 0},
+
+		{name: "Equally 10_000", score: []int{10_000, 10_000, 10_000}, want: 0},
+
+		{name: "Mixed", score: []int{10_000, 15_000, 12_000, 8000}, want: 350},
+	}
+
+	for _, tests := range tests {
+
+
+		got := bonusAmount(5, tests.score)
+
+		if got != tests.want {
+
+			t.Error("bonusAmount test", tests.name, "got", got, "want", tests.want)
+
 		}
+
 	}
 
-
-
-
+}
