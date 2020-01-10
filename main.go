@@ -10,17 +10,17 @@ func main() {
 
 }
 
-func bonusAmount(percent int, salary []int) int {
+func bonusAmount(percent int, sales []int) int {
 
 	sumOfBonuses := 0
 
-	for _, employee := range salary {
+	for _, sale := range sales {
 
 		bonusBorder := 10_000
 
-		if employee > bonusBorder {
+		if sale > bonusBorder {
 
-			bonus := employee - bonusBorder
+			bonus := sale - bonusBorder
 
 			bonus = bonus * percent / 100
 
